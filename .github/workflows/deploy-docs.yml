@@ -20,14 +20,16 @@ jobs:
         with:
           node-version: 16
 
-      - run: npm ci --legacy-peer-deps
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
       ##ci - indica que o npm estará rodando em um ambiente não interativo
 
-      - run: npm run build-storybook
+      - name: Build Storybook
+        run: npm run build-storybook
 
       - name: Deploy Storybook
         run: npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
         env:
-          GH_TOKEN: ${{ github.actor }}:${{ screts.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
         ##indicando o ambiente e o diretorio onde está buildado o storybook
         ###Para que o deploy não tente refazer a build
