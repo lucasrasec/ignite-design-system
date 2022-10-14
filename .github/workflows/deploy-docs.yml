@@ -16,11 +16,11 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setuop-node@v3
+        uses: actions/setup-node@v3
         with:
           node-version: 16
 
-      - run: npm ci --force
+      - run: npm ci --legacy-peer-deps
       ##ci - indica que o npm estará rodando em um ambiente não interativo
 
       - run: npm run build-storybook
