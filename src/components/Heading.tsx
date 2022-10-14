@@ -5,26 +5,32 @@ import "../styles/global.css";
 
 export interface HeadingProps {
   size?: "sm" | "md" | "lg";
-  child: ReactNode;
+  children: ReactNode;
   asChild?: boolean;
+  className?: string;
 }
 
 export function Heading({
   size = "md",
-  child,
-  asChild: asChildren,
+  children,
+  asChild,
+  className,
 }: HeadingProps) {
-  const Comp = asChildren ? Slot : "h2";
+  const Comp = asChild ? Slot : "h2";
 
   return (
     <Comp
-      className={clsx("text-gray-100 font-bold font-sans", {
-        "text-lg": size === "sm",
-        "text-xl": size === "md",
-        "text-2xl": size === "lg",
-      })}
+      className={clsx(
+        "text-gray-100 font-bold font-sans",
+        {
+          "text-lg": size === "sm",
+          "text-xl": size === "md",
+          "text-2xl": size === "lg",
+        },
+        className
+      )}
     >
-      {child}
+      {children}
     </Comp>
   );
 }
