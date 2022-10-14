@@ -1,0 +1,33 @@
+name: Deploy Storybook
+
+#Automatizando o deploy do storybook da aplicação
+## Sempre que houver um push na branche main
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setuop-node@v3
+        with:
+          node-version: 16
+
+      - run: npm ci
+      ##ci - indica que o npm estará rodando em um ambiente não interativo
+
+      - run: npm run build-storybook
+
+      - name: Deploy Storybook
+        run: npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
+        env:
+          GH_TOKEN: ${{ github.actor }}:${{ screts.GITHUB_TOKEN }}
+        ##indicando o ambiente e o diretorio onde está buildado o storybook
+        ###Para que o deploy não tente refazer a build

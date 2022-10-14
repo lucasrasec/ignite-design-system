@@ -23,3 +23,6 @@ dis-ssr
 *.sw?
 
 storybook-static
+
+# yarn.lock
+package-lock.json
