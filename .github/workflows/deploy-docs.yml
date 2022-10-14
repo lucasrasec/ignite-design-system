@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 16
 
-      - run: npm ci
+      - run: npm ci --force
       ##ci - indica que o npm estará rodando em um ambiente não interativo
 
       - run: npm run build-storybook
