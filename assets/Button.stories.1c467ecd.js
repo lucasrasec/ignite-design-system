@@ -1,0 +1,2 @@
+import{B as t}from"./Button.a01492a4.js";import"./clsx.m.256e9345.js";import"./index.module.d7ad2a99.js";import"./index.b0e93729.js";import"./iframe.e66b5d7f.js";/* empty css               */import"./jsx-runtime.b07f5977.js";const i={title:"Components/Button",component:t,args:{children:"Texto padr\xE3o"},argTypes:{}},a={},u=["Default"];export{a as Default,u as __namedExportsOrder,i as default};
+//# sourceMappingURL=Button.stories.1c467ecd.js.map
